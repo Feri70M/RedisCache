@@ -1,4 +1,4 @@
-module RedisCache
+module github.com/Feri70M/RedisCache
 
 go 1.23.1
 
