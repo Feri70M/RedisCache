@@ -14,7 +14,7 @@ A simple Redis caching library built with Go. This package provides a flexible a
 To use this package in your project, you need to include it in your `go.mod` file. You can use the following command to add it:
 
 ```bash
-go get github.com/~
+go get github.com/Feri70M/RedisCache
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ import (
     "log"
     "time"
 
-    "get github.com/~"
+    "get github.com/Feri70M/RedisCache"
 )
 
 func main() {
