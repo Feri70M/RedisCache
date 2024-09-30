@@ -9,16 +9,16 @@ type (
 	}
 
 	Options struct {
-		Address     string
-		Password    string
-		DB          int
-		UseSentinel bool
-		Sentinel    Sentinel
+		Address     string   `yaml:"address"`
+		Password    string   `yaml:"password"`
+		DB          int      `yaml:"db"`
+		UseSentinel bool     `yaml:"use_sentinel"`
+		Sentinel    Sentinel `yaml:"sentinel"`
 	}
 
 	Sentinel struct {
-		Name  string
-		Addrs []string
+		Name  string   `yaml:"name"`
+		Addrs []string `yaml:"addresses"`
 	}
 
 	KeyNotFoundError struct{}
