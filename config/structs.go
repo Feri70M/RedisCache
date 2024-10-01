@@ -22,4 +22,8 @@ type (
 	}
 
 	KeyNotFoundError struct{}
+
+	ConnectionError struct {
+		Message string
+	}
 )

@@ -1,12 +1,15 @@
 package config
 
 import (
+	"context"
 	"errors"
 
 	"github.com/go-redis/redis/v8"
 )
 
 func NewCache(opts Options) (CacheInterface, error) {
+
+	var client *redis.Client
 
 	if opts.UseSentinel {
 		if opts.Sentinel.Name == "" || len(opts.Sentinel.Addrs) == 0 {
@@ -18,6 +21,7 @@ func NewCache(opts Options) (CacheInterface, error) {
 			DB:            opts.DB,
 			Password:      opts.Password,
 		})
+		client = sentinelClient
 
 		return &CacheStruct{Options: opts, client: sentinelClient}, nil
 	}
@@ -27,6 +31,12 @@ func NewCache(opts Options) (CacheInterface, error) {
 		Password: opts.Password,
 		DB:       opts.DB,
 	})
+	client = standaloneClient
+
+	_, err := client.Ping(context.Background()).Result()
+	if err != nil {
+		return nil, err
+	}
 
 	return &CacheStruct{Options: opts, client: standaloneClient}, nil
 }

@@ -40,3 +40,7 @@ func (c *CacheStruct) Close() error {
 func (e KeyNotFoundError) Error() string {
 	return "key not found"
 }
+
+func (e *ConnectionError) Error() string {
+	return e.Message
+}
